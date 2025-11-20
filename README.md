@@ -164,6 +164,41 @@ npm run build:frontend
 npm run build:backend
 ```
 
+## 🚀 Deployment (Hospedagem)
+
+O projeto está pronto para deploy em diversas plataformas. Veja o guia completo em **[DEPLOYMENT.md](DEPLOYMENT.md)**.
+
+### Opções Recomendadas:
+
+#### Opção 1: Vercel + Railway (Gratuito)
+- **Frontend**: Deploy no Vercel (automático via GitHub)
+- **Backend + DB**: Deploy no Railway (PostgreSQL incluído)
+- ✅ Melhor opção para começar
+
+#### Opção 2: Docker (VPS/Cloud)
+```bash
+# Desenvolvimento
+docker-compose up -d
+
+# Produção
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+#### Scripts Úteis:
+```bash
+# Setup automático do ambiente
+./scripts/setup.sh
+
+# Gerar JWT secret seguro
+node scripts/generate-jwt-secret.js
+```
+
+### Deploy Rápido (Vercel):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/seu-usuario/VinPed)
+
+**Veja instruções detalhadas em:** [DEPLOYMENT.md](DEPLOYMENT.md)
+
 ## 📁 Estrutura do Projeto
 
 ```
@@ -317,6 +352,46 @@ npm run test
 - [ ] Integração Open Banking
 - [ ] PWA offline-first
 - [ ] Modo escuro
+
+## 🔄 CI/CD
+
+O projeto inclui GitHub Actions para integração e deploy contínuos:
+
+### Pipeline Automático:
+- ✅ Lint e type checking (TypeScript)
+- ✅ Testes automatizados
+- ✅ Build de produção
+- ✅ Deploy automático (Vercel)
+- ✅ Security audit
+
+### Configurar no GitHub:
+
+1. Vá em `Settings` → `Secrets and variables` → `Actions`
+2. Adicione os secrets necessários:
+   - `VERCEL_TOKEN`
+   - `VERCEL_ORG_ID`
+   - `VERCEL_PROJECT_ID`
+
+Ver mais em: [.github/workflows/ci.yml](.github/workflows/ci.yml)
+
+## 🐳 Docker
+
+### Desenvolvimento com Docker:
+```bash
+# Subir todos os serviços (Frontend, Backend, PostgreSQL)
+docker-compose up -d
+
+# Ver logs
+docker-compose logs -f
+
+# Parar serviços
+docker-compose down
+```
+
+### Produção com Docker:
+```bash
+docker-compose -f docker-compose.prod.yml up -d
+```
 
 ## 🤝 Contribuindo
 
